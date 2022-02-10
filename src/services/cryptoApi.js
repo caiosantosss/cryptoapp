@@ -1,4 +1,8 @@
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query';
 
+const cryptoApiHeaders = {
+
+}
 
 // var options = {
 //   method: 'GET',
@@ -14,6 +18,6 @@
 //   },
 //   headers: {
 //     'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
-//     'x-rapidapi-key': '511371cb16mshea27035f1c65b7dp1f8988jsn41cf3c28dcf8'
+//     'x-rapidapi-key': process.env.REACT_APP_CRYPTO_API_KEY
 //   }
 // };
