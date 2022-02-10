@@ -12,7 +12,24 @@ const App = () => {
         <Navbar />
       </div>
       <div className="main">
-
+        <Layout>
+          <div className="routes">
+            <Switch>
+              <Route exact path="/">
+                <Homepage />
+              </Route>
+              <Route exact path="/exchanges">
+                <Exchanges />
+              </Route>
+              <Route exact path="/cryptocurrencies">
+                <Cryptocurrencies />
+              </Route>
+              <Route exact path="/crypto/:coinId">
+                <CryptoDetails />
+              </Route>
+            </Switch>
+          </div>
+        </Layout>
       </div>
       <div className="footer">
 
