@@ -2,7 +2,16 @@ import React from 'react';
 import { Select, Typography, Row, Col, Avatar, Card } from 'antd';
 import moment from 'moment';
 
-const News = () => {
+import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi';
+
+const { Text, Title } = Typography;
+const { Option } = Select;
+
+const News = ({ simplified }) => {
+  const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', count: simplified ? 5 : 10 });
+
+  console.log(cryptoNews);
+
   return (
     <div>News</div>
   )
