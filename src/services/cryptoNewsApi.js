@@ -6,7 +6,7 @@ const cryptoNewsHeaders = {
   'x-rapidapi-key': process.env.REACT_APP_API_RAPIDAPI_KEY,
 };
 
-const baseUrl = process.env.REACT_APP_NEWS_API_URL;
+const baseUrl = process.env.REACT_APP_NEWS_RAPIDAPI_URL;
 
 const createRequest = (url) => ({ url, headers: cryptoNewsHeaders });
 
