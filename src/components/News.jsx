@@ -7,8 +7,10 @@ import { useGetCryptoNewsQuery } from '../services/cryptoNewsApi';
 const { Text, Title } = Typography;
 const { Option } = Select;
 
+const demoImage = 'https://picsum.photos/200';
+
 const News = ({ simplified }) => {
-  const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', count: simplified ? 5 : 10 });
+  const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', count: simplified ? 6 : 12 });
 
   if (!cryptoNews?.value) return 'Loading...';
 
@@ -20,6 +22,7 @@ const News = ({ simplified }) => {
             <a href={news.url} target="_blank" rel="noopener noreferrer">
               <div className="news-image-container">
                 <Title className='news-title' level={4}>{news.name}</Title>
+                <img src={news?.image?.thumbnail?.contentUrl || demoImage} alt={news} />
               </div>
             </a>
           </Card>
