@@ -23,6 +23,7 @@ const News = ({ simplified }) => {
               <div className="news-image-container">
                 <Title className='news-title' level={4}>{news.name}</Title>
                 <img src={news?.image?.thumbnail?.contentUrl || demoImage} alt={news} />
+                {/* fix the size */}
               </div>
               <p>
                 {news.description > 100 ?
@@ -30,6 +31,12 @@ const News = ({ simplified }) => {
                   : news.description
                 }
               </p>
+              <div className="provider-container">
+                <div>
+                  <Avatar src={news.provider?.image?.thumbnail?.contentUrl || demoImage} alt="news" />
+                </div>
+                <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
+              </div>
             </a>
           </Card>
         </Col>
