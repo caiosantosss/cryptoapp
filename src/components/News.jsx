@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Select, Typography, Row, Col, Avatar, Card } from 'antd';
 import moment from 'moment';
 
@@ -10,19 +10,32 @@ const { Option } = Select;
 const demoImage = 'https://picsum.photos/200';
 
 const News = ({ simplified }) => {
+  const [newsCategory, setNewsCategory] = useState(initialState);
   const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', count: simplified ? 6 : 12 });
 
   if (!cryptoNews?.value) return 'Loading...';
 
   return (
     <Row gutter={[24, 24]}>
+      {!simplified && (
+        <Col span={24}>
+          <Select
+            showSearch
+            className='select-news'
+            placeholder='Select a Crypto'
+            optionFilterProp='children'
+            onChange={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+          >
+          </Select>
+        </Col>
+      )}
       {cryptoNews.value.map((news, i) => (
         <Col xs={24} sm={12} lg={6} key={i}>
           <Card hoverable className="news-card">
             <a href={news.url} target="_blank" rel="noopener noreferrer">
               <div className="news-image-container">
                 <Title className='news-title' level={4}>{news.name}</Title>
-                <img src={news?.image?.thumbnail?.contentUrl || demoImage} alt={news} />
+                <img style={{ maxWidth: '200px', maxHeight: '100px' }} src={news?.image?.thumbnail?.contentUrl || demoImage} alt={news} />
               </div>
               <p>
                 {news.description > 100 ?
@@ -36,7 +49,6 @@ const News = ({ simplified }) => {
                   <Text className='provider-name'>{news.provider[0]?.name}</Text>
                 </div>
                 <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
-                {/* fix the Avatar */}
               </div>
             </a>
           </Card>
