@@ -23,7 +23,6 @@ const News = ({ simplified }) => {
               <div className="news-image-container">
                 <Title className='news-title' level={4}>{news.name}</Title>
                 <img src={news?.image?.thumbnail?.contentUrl || demoImage} alt={news} />
-                {/* fix the size */}
               </div>
               <p>
                 {news.description > 100 ?
@@ -33,7 +32,7 @@ const News = ({ simplified }) => {
               </p>
               <div className="provider-container">
                 <div>
-                  <Avatar src={news.provider?.image?.thumbnail?.contentUrl || demoImage} alt="news" />
+                  <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl || demoImage} alt="news" />
                   <Text className='provider-name'>{news.provider[0]?.name}</Text>
                 </div>
                 <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
