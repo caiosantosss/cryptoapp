@@ -10,7 +10,7 @@ const { Option } = Select;
 const demoImage = 'https://picsum.photos/200';
 
 const News = ({ simplified }) => {
-  const [newsCategory, setNewsCategory] = useState(initialState);
+  const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
   const { data: cryptoNews } = useGetCryptoNewsQuery({ newsCategory: 'Cryptocurrency', count: simplified ? 6 : 12 });
 
   if (!cryptoNews?.value) return 'Loading...';
@@ -26,6 +26,7 @@ const News = ({ simplified }) => {
             optionFilterProp='children'
             onChange={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
           >
+            <Option value='Cryptocurrency'>Cryptocurrency</Option>
           </Select>
         </Col>
       )}
