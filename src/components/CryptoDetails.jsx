@@ -9,8 +9,12 @@ const { Title, Text } = Typography;
 const { Option } = Select;
 
 const CryptoDetails = () => {
+  const { coinId } = useParams();
+
   return (
-    <div>CryptoDetails</div>
+    <div>
+      CryptoDetails {coinId}
+    </div>
   )
 }
 
