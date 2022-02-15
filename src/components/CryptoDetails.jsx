@@ -15,6 +15,10 @@ const CryptoDetails = () => {
   const [timePeriod, setTimePeriod] = useState('7d');
   const { data, isFeching } = useGetCryptoDetailsQuery(coinId);
 
+  const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
+
+
+
   console.log(data);
 
   return (
