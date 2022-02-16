@@ -85,7 +85,7 @@ const CryptoDetails = () => {
         <Col className='other-stats-info'>
           <Col className='coin-value-statistics-heading'>
             <Title level={3} className='coin-details-heading'>
-              {cryptoDetails?.name} Other Statistics
+              Other Statistics
             </Title>
             <p>
               An overview showing the statistics of {cryptoDetails?.name}
@@ -101,6 +101,13 @@ const CryptoDetails = () => {
             </Col>
           ))}
         </Col>
+      </Col>
+      <Col className='coin-desc-link'>
+        <Row className='coin-desc'>
+          <Title level={3} className='coin-details-heading'>
+            What is {cryptoDetails.name}
+          </Title>
+        </Row>
       </Col>
     </Col>
   )
