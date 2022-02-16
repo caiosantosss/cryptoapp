@@ -16,8 +16,10 @@ const CryptoDetails = () => {
   const { coinId } = useParams();
   const [timePeriod, setTimePeriod] = useState('7d');
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
-  const { data: coinHistory } = useGetCryptoHistoryQuery(coinId, timePeriod);
+  const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timePeriod });
   const cryptoDetails = data?.data?.coin;
+
+  // console.log(coinHistory);
 
   // cryptoDetails["24hVolume"] = cryptoDetails.delete_24hVolume;
 

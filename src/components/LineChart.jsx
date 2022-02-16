@@ -10,14 +10,16 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
   const coinTimestamp = [];
 
   for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
-    coinPrice.push(coinHistory?.data?.history[i].price);
+    coinPrice.push(coinHistory?.data?.history[i]?.price);
   }
 
   for (let i = 0; i < coinHistory?.data?.history?.length; i += 1) {
-    coinTimestamp.push(new Date(coinHistory?.data?.history[i].timestamp * 1000).toLocaleDateString());
+    coinTimestamp.push(new Date(coinHistory?.data?.history[i]?.timestamp * 1000).toLocaleDateString());
   }
 
-  const data = {
+  console.log(coinTimestamp);
+
+  const config = {
     labels: coinTimestamp,
     datasets: [
       {
@@ -27,25 +29,31 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
         backgroundColor: '#0071bd',
         borderColor: '#0071bd',
       }
-    ]
-  };
-
-  console.log(data);
-
-  const options = {
-    scales: {
-      yAxes: [
-        {
+    ],
+    options: {
+      scales: {
+        yAxes: [{
           ticks: {
-            beginAtZero: true,
-          },
-        },
-      ],
-    },
+            reverse: true,
+          }
+        }]
+      }
+    }
   };
 
-  console.log(options);
 
+  // const options = {
+  //   scales: {
+  //     yAxes: [
+  //       {
+  //         ticks: {
+  //           beginAtZero: true,
+  //           reverse: true,
+  //         },
+  //       },
+  //     ],
+  //   },
+  // };
 
   return (
     <>
@@ -56,7 +64,7 @@ const LineChart = ({ coinHistory, currentPrice, coinName }) => {
           <Title level={5} className='current-price'>Current {coinName} Price: $ {currentPrice}</Title>
         </Col>
       </Row>
-      <Line data={data} options={options} />
+      <Line data={config} />
     </>
   )
 }
