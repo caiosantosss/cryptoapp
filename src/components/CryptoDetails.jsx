@@ -21,7 +21,7 @@ const CryptoDetails = () => {
 
   // cryptoDetails["24hVolume"] = cryptoDetails.delete_24hVolume;
 
-  // if (isFetching) return <Loader />;
+  if (isFetching) return 'Loading...';
 
   const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
@@ -56,13 +56,13 @@ const CryptoDetails = () => {
       </Col>
       <Select defaultValue='7d'
         className='select-timeperiod'
-        placeholder='Select Time Period'
+        placeholder='Select TimePeriod'
         onChange={(value) => setTimePeriod(value)}
       >
         {time.map((date) => <Option key={date}>{date}</Option>)}
 
       </Select>
-      <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name} />
+      <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails?.price)} coinName={cryptoDetails?.name} />
       <Col className='stats-container'>
         <Col className='coin-value-statistics'>
           <Col className='coin-value-statistics-heading'>
